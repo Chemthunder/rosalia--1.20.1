@@ -1,0 +1,10 @@
+{
+  "item.rosalia.blossoming_longsword": "Blossoming Longsword",
+
+  "rosalia.subtitles.item.longsword_spread": "Longsword charges up",
+
+  "enchantment.rosalia.subdivide": "Subdivide",
+  "enchantment.rosalia.subdivide.desc": "Swaps the Blossoming Longsword's shockwave for a violent dash forward, damaging any entities nearby.",
+  "enchantment.rosalia.bouqet": "Bouqet",
+  "enchantment.rosalia.bouqet.desc": "Allows the user to throw out dangerous thorns that will bypass invincibility frames, one for each charge of the Blossoming Longsword."
+}

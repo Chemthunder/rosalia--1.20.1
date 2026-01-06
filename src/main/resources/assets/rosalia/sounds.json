@@ -1,0 +1,8 @@
+{
+  "item.longsword_spread": {
+    "sounds": [
+      "rosalia:item/longsword_spread"
+    ],
+    "subtitle": "rosalia.subtitles.item.longsword_spread"
+  }
+}

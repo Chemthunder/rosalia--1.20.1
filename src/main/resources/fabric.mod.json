@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "id": "rosalia",
+  "version": "${version}",
+  "name": "Rosalia",
+  "description": "A dash of spellbinding makes your flowers come to life!",
+  "authors": [
+    "Chemthunder",
+    "Hstar747"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/rosalia/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "silly.chemthunder.rosalia.Rosalia"
+    ],
+    "client": [
+      "silly.chemthunder.rosalia.client.RosaliaClient"
+    ],
+    "fabric-datagen": [
+      "silly.chemthunder.data.RosaliaDataGenerator"
+    ],
+    "cardinal-components": [
+      "silly.chemthunder.rosalia.cca.RosaliaComponents"
+    ]
+  },
+  "custom": {
+    "cardinal-components": [
+      "rosalia:longsword",
+      "rosalia:longsword_player"
+    ]
+  },
+  "mixins": [
+    "rosalia.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": "*"
+  }
+}
