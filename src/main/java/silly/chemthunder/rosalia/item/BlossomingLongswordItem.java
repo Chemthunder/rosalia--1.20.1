@@ -1,10 +1,10 @@
 package silly.chemthunder.rosalia.item;
 
 import net.minecraft.client.render.entity.model.BipedEntityModel;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -14,7 +14,6 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -23,15 +22,15 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import silly.chemthunder.ozone.api.thingies.CustomBipedEntityModelPoseItem;
 import silly.chemthunder.ozone.api.thingies.CustomCritEffectItem;
+import silly.chemthunder.ozone.api.thingies.CustomDeathSourceItem;
 import silly.chemthunder.rosalia.cca.entity.LongswordPlayerComponent;
 import silly.chemthunder.rosalia.cca.item.BlossomingLongswordItemComponent;
-import silly.chemthunder.rosalia.index.RosaliaEnchantments;
-import silly.chemthunder.rosalia.index.RosaliaParticles;
-import silly.chemthunder.rosalia.index.RosaliaSounds;
+import silly.chemthunder.rosalia.entity.ThornEntity;
+import silly.chemthunder.rosalia.index.*;
 
 import java.util.List;
 
-public class BlossomingLongswordItem extends SwordItem implements CustomBipedEntityModelPoseItem, CustomCritEffectItem {
+public class BlossomingLongswordItem extends SwordItem implements CustomBipedEntityModelPoseItem, CustomCritEffectItem, CustomDeathSourceItem {
     public BlossomingLongswordItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
     }
@@ -54,6 +53,9 @@ public class BlossomingLongswordItem extends SwordItem implements CustomBipedEnt
         if (EnchantmentHelper.getLevel(RosaliaEnchantments.SUBDIVIDE, stack) > 0) {
             return 0xff6e94;
         }
+        if (EnchantmentHelper.getLevel(RosaliaEnchantments.BOUQUET, stack) > 0) {
+            return 0x78ffa3;
+        }
         return 0xfff27a;
     }
 
@@ -61,6 +63,9 @@ public class BlossomingLongswordItem extends SwordItem implements CustomBipedEnt
     public Text getName(ItemStack stack) {
         if (EnchantmentHelper.getLevel(RosaliaEnchantments.SUBDIVIDE, stack) > 0) {
             return super.getName(stack).copy().styled(style -> style.withColor(0xff6e94));
+        }
+        if (EnchantmentHelper.getLevel(RosaliaEnchantments.BOUQUET, stack) > 0) {
+            return super.getName(stack).copy().styled(style -> style.withColor(0x78ffa3));
         }
         return super.getName(stack).copy().styled(style -> style.withColor(0xfff27a));
     }
@@ -78,10 +83,13 @@ public class BlossomingLongswordItem extends SwordItem implements CustomBipedEnt
         BlossomingLongswordItemComponent component = BlossomingLongswordItemComponent.KEY.get(user.getStackInHand(hand));
 
         boolean hasSubdivide = EnchantmentHelper.getLevel(RosaliaEnchantments.SUBDIVIDE, user.getStackInHand(hand)) > 0;
+        boolean hasBouquet = EnchantmentHelper.getLevel(RosaliaEnchantments.BOUQUET, user.getStackInHand(hand)) > 0;
 
         if (component.getCharge() >= 7 || user.isCreative()) {
             if (hasSubdivide) {
                 subdivide(user);
+            } else if (hasBouquet) {
+                bouquet(user, world);
             } else {
                 base(user, world);
             }
@@ -105,6 +113,22 @@ public class BlossomingLongswordItem extends SwordItem implements CustomBipedEnt
 
         LongswordPlayerComponent.KEY.get(user).dashTicks = 20;
         LongswordPlayerComponent.KEY.get(user).sync();
+    }
+
+    private void bouquet(PlayerEntity player, World world) {
+        if (world instanceof ServerWorld serverWorld) {
+
+            for (int i = 0; i < 3; i++) {
+                float f = 1.0f;
+                ThornEntity thorn = new ThornEntity(RosaliaEntities.THORN, serverWorld);
+                thorn.setPosition(player.getX(), player.getY() + 1.5f, player.getZ());
+
+                thorn.setVelocity(player, player.getPitch(), player.getYaw(), 0.0f, f * 3.0f, 2.5f);
+
+                thorn.setOwner(player);
+                serverWorld.spawnEntity(thorn);
+            }
+        }
     }
 
     private void base(PlayerEntity player, World world) {
@@ -200,5 +224,10 @@ public class BlossomingLongswordItem extends SwordItem implements CustomBipedEnt
 
 
         }
+    }
+
+    @Override
+    public DamageSource getKillSource(LivingEntity livingEntity) {
+        return RosaliaDamageSources.enflower(livingEntity);
     }
 }

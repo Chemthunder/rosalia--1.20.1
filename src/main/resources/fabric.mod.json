@@ -32,7 +32,9 @@
   "custom": {
     "cardinal-components": [
       "rosalia:longsword",
-      "rosalia:longsword_player"
+      "rosalia:longsword_player",
+
+      "rosalia:vessel_item"
     ]
   },
   "mixins": [

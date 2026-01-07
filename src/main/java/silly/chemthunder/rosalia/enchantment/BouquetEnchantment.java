@@ -7,8 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import silly.chemthunder.rosalia.index.RosaliaItems;
 
-public class BouqetEnchantment extends Enchantment {
-    public BouqetEnchantment(EquipmentSlot... slotTypes) {
+public class BouquetEnchantment extends Enchantment {
+    public BouquetEnchantment(EquipmentSlot... slotTypes) {
         super(Rarity.RARE, EnchantmentTarget.WEAPON, slotTypes);
     }
 

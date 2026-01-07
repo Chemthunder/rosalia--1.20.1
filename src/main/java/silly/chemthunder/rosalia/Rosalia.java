@@ -4,10 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import silly.chemthunder.rosalia.index.RosaliaEnchantments;
-import silly.chemthunder.rosalia.index.RosaliaItems;
-import silly.chemthunder.rosalia.index.RosaliaParticles;
-import silly.chemthunder.rosalia.index.RosaliaSounds;
+import silly.chemthunder.rosalia.index.*;
 
 public class Rosalia implements ModInitializer {
 	public static final String MOD_ID = "rosalia";
@@ -23,6 +20,8 @@ public class Rosalia implements ModInitializer {
         RosaliaParticles.index();
         RosaliaSounds.index();
         RosaliaEnchantments.index();
+        RosaliaItemGroups.index();
+        RosaliaEntities.index();
 
 		LOGGER.info("Rosalia initialized!!!! :333 >w<");
 	}
