@@ -4,5 +4,11 @@
       "rosalia:item/longsword_spread"
     ],
     "subtitle": "rosalia.subtitles.item.longsword_spread"
+  },
+  "music.daisy_bell": {
+    "sounds": [
+      "rosalia:music/daisy_bel"
+    ],
+    "subtitle": "rosalia.subtitles.music.daisy_bell"
   }
 }

@@ -1,13 +1,18 @@
 package silly.chemthunder.rosalia.index;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.item.MusicDiscItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import silly.chemthunder.rosalia.Rosalia;
+import silly.chemthunder.rosalia.block.EveroseBlockItem;
+import silly.chemthunder.rosalia.block.PetrifiedRoseBlockItem;
 import silly.chemthunder.rosalia.item.BlossomingLongswordItem;
+import silly.chemthunder.rosalia.item.DaisyBellDiscItem;
 import silly.chemthunder.rosalia.item.FloweringVesselItem;
 
 import java.util.LinkedHashMap;
@@ -24,9 +29,19 @@ public interface RosaliaItems {
             .maxCount(1)
     ));
 
-    Item DAISY_BELL = create("daisy_bell", new MusicDiscItem(4, SoundEvents.BLOCK_COPPER_BREAK, new  Item.Settings()
+    Item DAISY_BELL = create("daisy_bell", new DaisyBellDiscItem(RosaliaSounds.MUSIC_DISC_DAISY_BELL, new Item.Settings()
             .maxCount(1)
-            , 120
+            .rarity(Rarity.RARE)
+    ));
+
+
+
+    Item EVEROSE = create("everose", new EveroseBlockItem(new Item.Settings()
+            .maxCount(16)
+    ));
+
+    Item PETRIFIED_ROSE = create("petrified_rose", new PetrifiedRoseBlockItem(new Item.Settings()
+            .maxCount(1)
     ));
 
     static <T extends Item> T create(String name, T item) {

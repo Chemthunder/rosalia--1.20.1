@@ -14,6 +14,8 @@ public interface RosaliaSounds {
 
     SoundEvent ITEM_LONGSWORD_SPREAD = createSoundEvent("item.longsword_spread");
 
+    SoundEvent MUSIC_DISC_DAISY_BELL = createSoundEvent("music.daisy_bell");
+
     static void index() {
         SOUND_EVENTS.keySet().forEach(soundEvent -> Registry.register(Registries.SOUND_EVENT, SOUND_EVENTS.get(soundEvent), soundEvent));
     }

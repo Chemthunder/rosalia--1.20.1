@@ -128,6 +128,8 @@ public class BlossomingLongswordItem extends SwordItem implements CustomBipedEnt
                 thorn.setOwner(player);
                 serverWorld.spawnEntity(thorn);
             }
+
+            player.swingHand(player.getActiveHand());
         }
     }
 
@@ -202,9 +204,6 @@ public class BlossomingLongswordItem extends SwordItem implements CustomBipedEnt
     @Override
     public void critEffect(ItemStack itemStack, World world, LivingEntity user, LivingEntity victim) {
         BlossomingLongswordItemComponent component = BlossomingLongswordItemComponent.KEY.get(itemStack);
-        if (user instanceof ServerPlayerEntity player) {
-            player.playSound(RosaliaSounds.ITEM_LONGSWORD_SPREAD, SoundCategory.PLAYERS, 1, 1);
-        }
 
         if (component.getCharge() < 7) {
             component.setCharge(component.getCharge() + 1);

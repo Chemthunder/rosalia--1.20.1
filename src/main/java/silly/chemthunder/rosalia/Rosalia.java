@@ -22,6 +22,7 @@ public class Rosalia implements ModInitializer {
         RosaliaEnchantments.index();
         RosaliaItemGroups.index();
         RosaliaEntities.index();
+        RosaliaBlocks.index();
 
 		LOGGER.info("Rosalia initialized!!!! :333 >w<");
 	}

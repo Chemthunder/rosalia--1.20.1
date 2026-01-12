@@ -1,8 +1,12 @@
 {
   "item.rosalia.blossoming_longsword": "Blossoming Longsword",
   "item.rosalia.flowering_vessel": "Flowering Vessel",
+  "block.rosalia.everose": "Everose",
+  "block.rosalia.petrified_rose": "Petrified Rose",
+  "item.rosalia.daisy_bell.desc": "Daisy Bell - Harry Dacre",
 
   "rosalia.subtitles.item.longsword_spread": "Longsword charges up",
+  "rosalia.subtitles.music.daisy_bell": "Daisy Bell plays",
 
   "enchantment.rosalia.subdivide": "Subdivide",
   "enchantment.rosalia.subdivide.desc": "Swaps the Blossoming Longsword's shockwave for a violent dash forward, damaging any entities nearby.",

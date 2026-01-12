@@ -30,5 +30,7 @@ public interface RosaliaItemGroups {
         itemGroup.add(RosaliaItems.BLOSSOMING_LONGSWORD);
         itemGroup.add(RosaliaItems.FLOWERING_VESSEL);
         itemGroup.add(RosaliaItems.DAISY_BELL);
+        itemGroup.add(RosaliaBlocks.EVEROSE);
+        itemGroup.add(RosaliaBlocks.PETRIFIED_ROSE);
     }
 }
