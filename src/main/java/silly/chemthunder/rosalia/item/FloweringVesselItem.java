@@ -1,18 +1,20 @@
 package silly.chemthunder.rosalia.item;
 
-import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import silly.chemthunder.rosalia.cca.item.BlossomingLongswordItemComponent;
+import org.jetbrains.annotations.Nullable;
 import silly.chemthunder.rosalia.cca.item.VesselItemComponent;
-import silly.chemthunder.rosalia.index.RosaliaEnchantments;
+
+import java.util.List;
 
 public class FloweringVesselItem extends Item {
     public FloweringVesselItem(Settings settings) {
@@ -60,5 +62,11 @@ public class FloweringVesselItem extends Item {
 
 
         return super.use(world, user, hand);
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        tooltip.add(Text.translatable("text.experimental").formatted(Formatting.RED));
+        super.appendTooltip(stack, world, tooltip, context);
     }
 }

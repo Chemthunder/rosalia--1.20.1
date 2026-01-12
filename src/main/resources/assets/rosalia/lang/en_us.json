@@ -13,5 +13,6 @@
   "enchantment.rosalia.bouquet": "Bouquet",
   "enchantment.rosalia.bouquet.desc": "Allows the user to throw out dangerous thorns that will bypass invincibility frames, one for each charge of the Blossoming Longsword.",
 
-  "itemgroup.rosalia": "Rosalia"
+  "itemgroup.rosalia": "Rosalia",
+  "text.experimental": "EXPERIMENTAL: UNFINISHED"
 }

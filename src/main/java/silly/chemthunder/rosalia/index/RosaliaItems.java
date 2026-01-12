@@ -1,11 +1,8 @@
 package silly.chemthunder.rosalia.index;
 
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.item.MusicDiscItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import silly.chemthunder.rosalia.Rosalia;
@@ -38,6 +35,7 @@ public interface RosaliaItems {
 
     Item EVEROSE = create("everose", new EveroseBlockItem(new Item.Settings()
             .maxCount(16)
+            .fireproof()
     ));
 
     Item PETRIFIED_ROSE = create("petrified_rose", new PetrifiedRoseBlockItem(new Item.Settings()

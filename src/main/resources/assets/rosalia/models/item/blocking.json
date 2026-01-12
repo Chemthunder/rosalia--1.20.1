@@ -1,0 +1,28 @@
+{
+	"format_version": "1.21.11",
+	"credit": "Made with Blockbench",
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "rosalia:item/longsword_handheld"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [6.1, -3.42, 121.75],
+			"translation": [-7.75, -1.25, 0],
+			"scale": [1.4, 1.4, 1.4]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [18.62, -5.3, 41.07],
+			"translation": [-7.75, -1.25, 0],
+			"scale": [1.4, 1.4, 1.4]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 45, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 45, 0],
+			"scale": [0.4, 0.4, 0.4]
+		}
+	}
+}

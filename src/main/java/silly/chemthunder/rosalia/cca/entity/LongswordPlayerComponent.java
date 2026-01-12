@@ -16,6 +16,7 @@ public class LongswordPlayerComponent implements AutoSyncedComponent, CommonTick
     public static final ComponentKey<LongswordPlayerComponent> KEY = ComponentRegistry.getOrCreate(Rosalia.id("longsword_player"), LongswordPlayerComponent.class);
     public int dashTicks = 0;
     private final PlayerEntity player;
+    public boolean isDashing = false;
 
     public LongswordPlayerComponent(PlayerEntity player) {
         this.player = player;
@@ -32,6 +33,7 @@ public class LongswordPlayerComponent implements AutoSyncedComponent, CommonTick
             subdivideEffect(player.getWorld(), player);
             if (dashTicks == 0) {
                 sync();
+                isDashing = false;
             }
         }
     }
@@ -69,10 +71,12 @@ public class LongswordPlayerComponent implements AutoSyncedComponent, CommonTick
     @Override
     public void readFromNbt(NbtCompound nbtCompound) {
         this.dashTicks = nbtCompound.getInt("dashTicks");
+        this.isDashing = nbtCompound.getBoolean("isDashing");
     }
 
     @Override
     public void writeToNbt(NbtCompound nbtCompound) {
         nbtCompound.putInt("dashTicks", dashTicks);
+        nbtCompound.putBoolean("isDashing", isDashing);
     }
 }

@@ -1,6 +1,5 @@
 package silly.chemthunder.rosalia.block;
 
-import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;

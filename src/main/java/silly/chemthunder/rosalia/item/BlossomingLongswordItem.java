@@ -11,9 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -26,7 +24,10 @@ import silly.chemthunder.ozone.api.thingies.CustomDeathSourceItem;
 import silly.chemthunder.rosalia.cca.entity.LongswordPlayerComponent;
 import silly.chemthunder.rosalia.cca.item.BlossomingLongswordItemComponent;
 import silly.chemthunder.rosalia.entity.ThornEntity;
-import silly.chemthunder.rosalia.index.*;
+import silly.chemthunder.rosalia.index.RosaliaDamageSources;
+import silly.chemthunder.rosalia.index.RosaliaEnchantments;
+import silly.chemthunder.rosalia.index.RosaliaEntities;
+import silly.chemthunder.rosalia.index.RosaliaParticles;
 
 import java.util.List;
 
@@ -73,7 +74,7 @@ public class BlossomingLongswordItem extends SwordItem implements CustomBipedEnt
     @Override
     public BipedEntityModel.ArmPose getArmPose(ItemStack itemStack, PlayerEntity playerEntity) {
         if (LongswordPlayerComponent.KEY.get(playerEntity).dashTicks > 0) {
-            return BipedEntityModel.ArmPose.BOW_AND_ARROW;
+            return BipedEntityModel.ArmPose.CROSSBOW_HOLD;
         }
         return BipedEntityModel.ArmPose.CROSSBOW_CHARGE;
     }
@@ -112,6 +113,7 @@ public class BlossomingLongswordItem extends SwordItem implements CustomBipedEnt
         user.addVelocity(h, k, l);
 
         LongswordPlayerComponent.KEY.get(user).dashTicks = 20;
+        LongswordPlayerComponent.KEY.get(user).isDashing = true;
         LongswordPlayerComponent.KEY.get(user).sync();
     }
 
@@ -195,6 +197,7 @@ public class BlossomingLongswordItem extends SwordItem implements CustomBipedEnt
 
                 if (player.isOnGround()) {
                     component.dashTicks = 0;
+                    component.isDashing = false;
                     component.sync();
                 }
             }
